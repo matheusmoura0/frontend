@@ -22,7 +22,33 @@ const getById = async (req, res) => {
     }
 }
 
+const create = async (req, res) => { 
+    try {
+    const newTodo = await Todos.create(req.body);
+        console.log(newTodo);
+        return res.status(201).json(newTodo);
+
+    } catch (error) {
+      return  res.status(500).json({ message: error.message });
+    }
+}
+
+const update = async (req, res) => { 
+    try {
+    const todoById = await Todos.findByPk(req.params.id);
+        await todoById.update(req.body);
+        return res.status(200).json(todoById);
+
+        
+    } catch (error) {
+      return  res.status(500).json({ message: error.message });
+    }
+        
+    }
+
 module.exports = {
     findAll,
-    getById
+    getById,
+    create,
+    update
 }
