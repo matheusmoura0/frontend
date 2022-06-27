@@ -1,7 +1,9 @@
-import { Sequelize } from "sequelize";
-const db = new Sequelize('Todo_database', 'root', '9193999', {
-    host: "localhost",
-    dialect: "mysql"
-});
+const exporess = require('express');
 
-export default db;
+const router = exporess.Router();
+
+const allTodos = require('../controllers/todos');
+
+router.get('/', allTodos.findAll);
+
+module.exports = router;
