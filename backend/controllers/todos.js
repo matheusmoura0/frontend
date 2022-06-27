@@ -46,9 +46,21 @@ const update = async (req, res) => {
         
     }
 
+    const deleteById = async (req, res) => { 
+        try {
+        const todoById = await Todos.findByPk(req.params.id);
+            await todoById.destroy();
+            return res.status(200).json(todoById);
+
+        } catch (error) {
+          return  res.status(500).json({ message: error.message });
+        }
+    }
+
 module.exports = {
     findAll,
     getById,
     create,
-    update
+    update,
+    deleteById
 }
