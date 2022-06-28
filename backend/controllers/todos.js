@@ -3,8 +3,6 @@ const { Todos } = require('../models');
 const findAll = async (_req, res) => { 
     try {
     const alltodos = await Todos.findAll();
-
-
       return  res.status(200).json(alltodos);
 
     } catch (error) {
@@ -36,6 +34,10 @@ const create = async (req, res) => {
 const update = async (req, res) => { 
     try {
     const todoById = await Todos.findByPk(req.params.id);
+
+      todoById.completed = !todoById.completed;
+      await todoById.save();
+
         await todoById.update(req.body);
         return res.status(200).json(todoById);
 
