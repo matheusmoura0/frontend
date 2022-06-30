@@ -18,6 +18,10 @@ module.exports = {
         type: Sequelize.BOOLEAN,
         defaultValue: false
       },
+      todotime : {
+        type: Sequelize.DATE,
+        defaultValue: Sequelize.NOW
+      },
     });
   },
 

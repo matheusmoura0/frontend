@@ -6,7 +6,8 @@ module.exports =  (sequelize, DataTypes) => {
             autoIncrement: true
         },
         todo: DataTypes.STRING,
-        completed: DataTypes.BOOLEAN
+        completed: DataTypes.BOOLEAN,
+        todotime: { type: DataTypes.DATE, defaultValue: DataTypes.NOW },
         
     },
     {
