@@ -29,11 +29,16 @@ function App() {
     await axios.delete('http://localhost:3300/api/todos/' + id);
     getTodos();
   }
-  
+
   const addTodo = async () => { 
     await axios.post(API, { todo: newTodo });
     getTodos();
     setpopUp(false);
+  }
+
+  const editTodo = async (id, content) => { 
+    await axios.put(`${API}${id}`, { todo: content });
+    getTodos();
   }
 
   return (
