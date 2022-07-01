@@ -1,13 +1,15 @@
 import React from 'react';
 import { useState } from "react";
-import { completeTodo } from '../helpers/requests';
+import { completeTodoApi } from '../helpers/requests';
 
 const TodoCard = ({ todo, deleteTodo, updateTodo, editTodo }) => { 
     const [isEditing, setIsEditing] = useState(false);
+    const input = React.useRef(null);
     const [todoText, setTodoText] = useState(todo.todo);
 
     const handleEdit = () => { 
         setIsEditing(true);
+
         input.current.focus();
     }
     const stopEditing = () => { 
@@ -16,7 +18,7 @@ const TodoCard = ({ todo, deleteTodo, updateTodo, editTodo }) => {
     }
 
     const completeTodos = async () => {
-        await completeTodo(todo.id);
+        await completeTodoApi(todo.id);
     };
 
     return (

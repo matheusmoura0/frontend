@@ -2,22 +2,22 @@ import axios from 'axios';
 
 const API = "http://localhost:3300/api/todos/";
 
-export const getTodos =  async () => { 
+export const getTodosApi =  async () => { 
     return await axios.get(API);
 }
 
-export const createTodo = async (todo) => { 
+export const createTodoApi = async (todo) => { 
     return await axios.post(API, todo);
 }
 
-export const completeTodo = async (id) => { 
+export const completeTodoApi = async (id) => { 
     return await axios.put(API + id);
 }
 
-export const deleteTodo = async (id) => { 
+export const deleteTodoApi = async (id) => { 
     return await axios.delete(API + id);
 }
 
-export const editTodo =  async (id, todo) => { 
+export const editTodoApi =  async (id, todo) => { 
     return await axios.put(API + id, todo);
 }
