@@ -1,12 +1,23 @@
 import axios from 'axios';
 
-const api = axios.create({
-    baseURL: `http://localhost:${process.env.REACT_APP_API_PORT || '3001'}`,
-  });
-  
+const API = "http://localhost:3300/api/todos/";
 
-export const requestData = async (endpoint) => {
-    const { data } = await api.get(endpoint);
-    return data;
-  };
-  
+export const getTodos =  async () => { 
+    return await axios.get(API);
+}
+
+export const createTodo = async (todo) => { 
+    return await axios.post(API, todo);
+}
+
+export const completeTodo = async (id) => { 
+    return await axios.put(API + id);
+}
+
+export const deleteTodo = async (id) => { 
+    return await axios.delete(API + id);
+}
+
+export const editTodo =  async (id, todo) => { 
+    return await axios.put(API + id, todo);
+}
