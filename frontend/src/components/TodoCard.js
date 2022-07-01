@@ -15,13 +15,13 @@ const TodoCard = ({ todo, deleteTodo, updateTodo, editTodo }) => {
         setTodoText(todo.todo);
     }
 
-    const completeTodo = async () => {
+    const completeTodos = async () => {
         await completeTodo(todo.id);
     };
 
     return (
         <div className={`todo ${todo.completed ? 'todo-completed' : ''}`}>
-            <input type="checkbox"  checked={todo.completed} onChange={ completeTodo } />
+            <input type="checkbox"  checked={todo.completed} onChange={ completeTodos } />
             <input type="text" ref={ input } value={todoText} readOnly={!isEditing} 
             onChange={(e) => setTodoText(e.target.value)}
             />
