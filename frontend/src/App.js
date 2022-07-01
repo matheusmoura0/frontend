@@ -42,10 +42,32 @@ function App() {
   }
 
   return (
-    <div>
-      <h1>Hello World</h1>
+    <div className="app">
+      <div className="todos">
+        <div className="tasks"> 
+        <h2> Suas tarefas </h2>
+        </div>
+        { todos.map(todo => (
+          <TodoCard key={todo.id} todo={todo} completeTodo={completeTodo} deleteTodo={() => deleteTodo(todo.id)} editTodo={editTodo}/>
+        ))}
+      </div>
+
+      <div className="add-popup" onClick={() => setpopUp( !popUp ? true:false )}>  + </div>
+      {popUp ? (
+        <div className="popup-conteiner">
+          <div className="add-close" onClick={() => setpopUp(false)}>  x </div>
+          <div className="content">
+            <h3> Add Task </h3>
+            <input  className="addTodoInput" type="text" value={newTodo} onChange={e => setNewTodo(e.target.value)} />
+            <div className="button" onClick={ addTodo } disabled={ todos.length}> Create Task </div>
+          </div>
+        </div>
+      ): ''}
+
+
     </div>
   );
 }
 
 export default App;
+
