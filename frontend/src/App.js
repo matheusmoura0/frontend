@@ -19,6 +19,11 @@ function App() {
     setTodos(todos.data);
   }
 
+  const completeTodo = async (id) => { 
+    await axios.put(`${API}${id}/complete`);
+    getTodos();
+  }
+
   return (
     <div>
       <h1>Hello World</h1>
