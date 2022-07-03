@@ -34,6 +34,7 @@ function App() {
     await axios.post(API, { todo: newTodo });
     getTodos();
     setpopUp(false);
+    setNewTodo("");
   }
 
   const editTodo = async (id, content) => { 
@@ -47,7 +48,7 @@ function App() {
         <div className="tasks"> 
         <h2> Suas tarefas </h2>
         </div>
-        { todos.map(todo => (
+         { todos.map(todo => (
           <TodoCard key={todo.id} todo={todo} completeTodo={completeTodo} deleteTodo={() => deleteTodo(todo.id)} editTodo={editTodo}/>
         ))}
       </div>
