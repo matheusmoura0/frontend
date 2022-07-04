@@ -1,7 +1,5 @@
 const frisby = require('frisby');
 
-
-const shell = require('shelljs');
 const api = 'http://localhost:3300';
 
 describe('1- can sign a new todo and return others', () => { 
