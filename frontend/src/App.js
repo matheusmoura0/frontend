@@ -57,7 +57,7 @@ function App() {
         ))}
       </div>
 
-      <div  data-testid="popUpButton" className="add-popup" onClick={() => setpopUp( !popUp ? true:false )}>  + </div>
+      <div  data-testid="popUpButton" className="add-popup" onClick={() => setpopUp( !popUp ? true:false, setNewTodo(""))}>  + </div>
       {popUp ? (
         <div className="popup-conteiner">
           <div className="content">
