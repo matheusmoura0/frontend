@@ -1,5 +1,7 @@
 import React from 'react';
 import { useState } from "react";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTrash, faFilePen, faBan, faFloppyDisk } from '@fortawesome/free-solid-svg-icons';
 
 const TodoCard = ({ todo, deleteTodo, completeTodo, editTodo }) => { 
     const input = React.useRef(null);
@@ -23,21 +25,22 @@ const TodoCard = ({ todo, deleteTodo, completeTodo, editTodo }) => {
 
     
     return (
-        <div className={`todo ${todo.completed ? 'todo-completed' : ''}`}>
-            <input type="checkbox"  checked={todo.completed} onChange={ completed } />
-            <input type="text" ref={ input } value={content} readOnly={!edit} 
+        <div  className={`todo ${todo.completed ? 'todo-completed' : ''}`}>
+            <input className='checkbox' type="checkbox"  checked={todo.completed} onChange={ completed } />
+            <input className='todo_text' onClick={ completed } type="text" ref={ input } value={content} readOnly={!edit} 
             onChange={(e) => setContent(e.target.value)}
             />
             <div className="todo__controls">
             {!edit ? (
             <>
-            {!todo.completed && <button onClick={handleEdit}>Edit</button>}
-            <button onClick={deleteTodo}>Delete</button>
+            {!todo.completed && <FontAwesomeIcon className='button' icon={ faFilePen} onClick={handleEdit}></FontAwesomeIcon>}
+            <FontAwesomeIcon className='button'  onClick={deleteTodo} icon={faTrash}></FontAwesomeIcon>
             </>
         ) : (
             <>
-            <button onClick={stopEditing}>Cancel</button>
-            <button onClick={() => editTodo(todo.id, content, setEdit(false))}>Save</button>
+            
+            <FontAwesomeIcon className='button' icon={faBan} onClick={stopEditing}> X </FontAwesomeIcon>
+            <FontAwesomeIcon className='button' icon={faFloppyDisk} onClick={() => editTodo(todo.id, content, setEdit(false))}>Save</FontAwesomeIcon>
             </>
         )}
             </div>

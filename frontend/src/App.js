@@ -3,6 +3,10 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import "./main.scss";
 import TodoCard from "./components/TodoCard";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faRectangleXmark } from '@fortawesome/free-solid-svg-icons';
+
+
 function App() {
   const API = "http://localhost:3300/api/todos/";
   const [todos, setTodos] = useState([]);
@@ -46,7 +50,7 @@ function App() {
     <div className="app">
       <div className="todos">
         <div className="tasks"> 
-        <h2>Suas tarefas</h2>
+        <h1 className="title">Suas tarefas ✔️ </h1>
         </div>
          { todos.map(todo => (
           <TodoCard key={todo.id} todo={todo} completeTodo={completeTodo} deleteTodo={() => deleteTodo(todo.id)} editTodo={editTodo}/>
@@ -56,11 +60,11 @@ function App() {
       <div  data-testid="popUpButton" className="add-popup" onClick={() => setpopUp( !popUp ? true:false )}>  + </div>
       {popUp ? (
         <div className="popup-conteiner">
-          <div  className="add-close" onClick={() => setpopUp(false)}>  x </div>
           <div className="content">
+          <FontAwesomeIcon icon={faRectangleXmark} className="add-close" onClick={() => setpopUp(false)}> </FontAwesomeIcon>
             <h3> Add Task </h3>
             <input  className="addTodoInput" type="text" value={newTodo} onChange={e => setNewTodo(e.target.value)} />
-            <div className="button" onClick={ addTodo } disabled={ todos.length}> Create Task </div>
+            <div className="button" onClick={ addTodo } disabled={ todos.length}> Criar tarefa </div>
           </div>
         </div>
       ): ''}
